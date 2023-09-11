@@ -158,3 +158,19 @@ function toggleExibirMatriz() {
     }
 }
 
+function limparFormulario() {
+    document.getElementById('dimensao').value = '';
+    document.getElementById('valor_min').value = '';
+    document.getElementById('valor_max').value = '';
+    document.getElementById('media_distancia').value = '';
+
+    // Desmarcar o checkbox "Exibir Matriz"
+    document.getElementById('exibirMatriz').checked = false;
+
+    // Se desejar, pode adicionar mais campos do formulário para limpar aqui.
+
+    // Além disso, se desejar, também pode adicionar código para esconder a matriz e a mensagem.
+    document.getElementById('matriz').style.display = 'none';
+    document.getElementById('mensagem').style.display = 'none';
+}
+
