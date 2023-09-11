@@ -16,6 +16,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="script.js"></script>
     <style>
+	
 	 #explicacao {
             text-align: justify;
         }
@@ -42,13 +43,17 @@
         }
 
         .cell {
-            width: 50px;
-            height: 50px;
-            border: 1px solid #000;
-            text-align: center;
-            line-height: 50px;
-            margin-right: 5px;
-        }
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    background-color: #CCCCCC; /* Adicionando um plano de fundo sutil */
+    margin-right: 5px;
+    margin-bottom: 5px; /* Adicionando uma margem inferior */
+    border: none; /* Removendo as bordas */
+    padding: 0; /* Removendo o espaçamento interno */
+}
+
 
         #mensagem {
             position: absolute;
@@ -98,7 +103,7 @@
     <div class="container">
         <div class="header">
             <h1>Gerador de Matriz para Caixeiro-viajante</h1>
-            <h2>Maicon Centner Germano</h2>
+            <h2>Maicon Centner Germano | LinkedIn: <a href="https://www.linkedin.com/in/maiconcentner/" target="_blank"> Acessar perfil </a></h2>
             <p>O problema do caixeiro viajante é um famoso desafio de otimização em que o objetivo é encontrar a rota mais 		curta que passe por um conjunto de cidades e retorne à cidade de origem. Este problema tem aplicações em 		logística, planejamento de rotas e muitas outras áreas.</p>
         
         <p>A criação de instâncias (conjuntos de dados específicos) para testar modelos de resolução é crucial para avaliar 	a eficácia e a eficiência desses modelos. Essas instâncias representam cenários reais que o caixeiro viajante pode 	enfrentar, permitindo a validação e a otimização de soluções.</p>
@@ -108,6 +113,7 @@
             <p>Este programa foi desenvolvido para ajudar estudantes e acadêmicos a gerar conjuntos de dados que 		representam distâncias entre cidades. Esses conjuntos de dados são fundamentais para testar algoritmos de 		otimização, especialmente no contexto do problema do caixeiro-viajante.</p>
             <p>O programa solicitará que você insira algumas informações:</p>
             <ul>
+		
                 <li>Dimensão da Matriz (quadrada): Este é o número de "cidades" que você deseja simular. A matriz resultante 		terá esse número de linhas e colunas.</li>
                 <li>Valor Mínimo e Valor Máximo: Estes valores definem o intervalo em que as distâncias entre as cidades 		serão escolhidas aleatoriamente.</li>
                 <li>Distância média entre cidades: Isso ajuda a determinar o valor central do intervalo de distâncias 			geradas.</li>
@@ -115,8 +121,9 @@
             <p>A matriz gerada mostrará as distâncias entre as cidades simuladas. Lembre-se de que essas distâncias são 		geradas aleatoriamente e servem apenas para fornecer um conjunto de dados para testes acadêmicos. Em 			cenários reais, as distâncias seriam medidas de acordo com a unidade apropriada.</p>
             <p>Espero que isso ajude a esclarecer como o programa funciona e como ele pode ser útil para seus estudos 			acadêmicos!</p>
         </div>
-        
-        
+        <br>
+        <h2>Parâmetros do gerador</h2>
+	<br>
         <form onsubmit="gerarMatriz(); return false;">
         <label for="dimensao">Dimensão da Matriz (quadrada):</label>
         <input type="number" id="dimensao" required><br><br>
@@ -135,6 +142,7 @@
 
     </form>
         <br>
+	<h2>Opções de cópia</h2>
         <input type="button" id="copiarPython" value="Copiar para Python" onclick="copiarParaPython(event)">
         
         <input type="button" id="copiarMatlab" value="Copiar para Matlab" onclick="copiarParaMatlab(event)">
@@ -145,7 +153,7 @@
 	    <br>
             <input type="checkbox" id="exibirMatriz" onchange="toggleExibirMatriz()">
 	    
-            <label for="exibirMatriz">Exibir Matriz</label>
+            <label for="exibirMatriz">Exibir Matriz (Recomendo exibir no máximo 14 colunas)</label>
         </div>
         <br>
         <h2>Matriz Gerada:</h2>
