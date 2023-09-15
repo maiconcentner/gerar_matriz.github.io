@@ -5,17 +5,18 @@ function gerarMatriz() {
         const valor_min = parseFloat(document.getElementById('valor_min').value);
         const valor_max = parseFloat(document.getElementById('valor_max').value);
         const media_distancia = parseFloat(document.getElementById('media_distancia').value);
+        const probabilidade_sem_conexao = parseFloat(document.getElementById('probabilidade_sem_conexao').value);
 
-        if (isNaN(dimensao) || isNaN(valor_min) || isNaN(valor_max) || isNaN(media_distancia)) {
+        if (isNaN(dimensao) || isNaN(valor_min)|| isNaN(probabilidade_sem_conexao) || isNaN(valor_max) || isNaN(media_distancia)) {
             throw new Error('Por favor, preencha todos os campos com valores numéricos.');
         }
 
-        if (dimensao <= 0 || valor_min < 0 || valor_max <= valor_min || media_distancia < 0) {
+        if (dimensao <= 0 || probabilidade_sem_conexao <= 0 || valor_min < 0 || valor_max <= valor_min || media_distancia < 0) {
             throw new Error('Por favor, insira valores válidos.');
         }
 
         // Gera a matriz aleatória
-        const matriz_aleatoria = gerarMatrizPython(dimensao, valor_min, valor_max, media_distancia);
+        const matriz_aleatoria = gerarMatrizPython(dimensao, valor_min, valor_max, media_distancia,probabilidade_sem_conexao);
 
         // Corrige a diagonal principal
         for (let i = 0; i < dimensao; i++) {
@@ -45,22 +46,32 @@ function gerarMatriz() {
 }
 
 // Função para gerar a matriz (similar à função em Python)
-function gerarMatrizPython(dimensao, valor_min, valor_max, media_distancia) {
+function gerarMatrizPython(dimensao, valor_min, valor_max, media_distancia, probabilidade_sem_conexao) {
     // Inicializa a matriz com zeros
     let matriz = Array.from({ length: dimensao }, () => Array(dimensao).fill(0));
 
     // Preenche a diagonal superior
     for (let i = 0; i < dimensao; i++) {
         for (let j = i + 1; j < dimensao; j++) {
-            const distancia = parseFloat((Math.random() * (media_distancia * 1.5 - media_distancia * 0.5) + media_distancia * 0.5).toFixed(2));
-            const valor = parseFloat((Math.random() * (valor_max - valor_min) + valor_min).toFixed(2));
-            matriz[i][j] = valor;
-            matriz[j][i] = valor;
+            // Gera um número aleatório entre 0 e 1
+            const chance_sem_conexao = Math.random();
+
+            if (chance_sem_conexao <= probabilidade_sem_conexao) {
+                matriz[i][j] = Infinity;  // Use Infinity para representar ausência de conexão
+                matriz[j][i] = Infinity;  // Se o grafo for não direcionado
+            } else {
+                const distancia = parseFloat((Math.random() * (media_distancia * 1.5 - media_distancia * 0.5) + media_distancia * 0.5).toFixed(2));
+                const valor = parseFloat((Math.random() * (valor_max - valor_min) + valor_min).toFixed(2));
+                matriz[i][j] = valor;
+                matriz[j][i] = valor;  // Se o grafo for não direcionado
+            }
         }
     }
 
     return matriz;
 }
+
+
 
 function copiarParaPython() {
     const matriz = obterMatriz();
