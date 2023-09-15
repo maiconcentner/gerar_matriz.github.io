@@ -28,7 +28,7 @@ function gerarMatriz() {
         const valor_melhor_rota = parseFloat(document.getElementById('valor_melhor_rota').value);
 
     if (valor_melhor_rota <= 0) {
-        throw new Error('Por favor, insira um valor válido para a melhor rota.');
+        throw new Error('Por favor, insira um valor válido para a melhor rota!');
     }
     const matriz_aleatoria_com_rota = gerarMatrizPython(dimensao, valor_min, valor_max, media_distancia, probabilidade_sem_conexao, melhor_rota, valor_melhor_rota);
 
