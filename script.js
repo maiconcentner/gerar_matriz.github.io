@@ -11,7 +11,7 @@ function gerarMatriz() {
             throw new Error('Por favor, preencha todos os campos com valores numéricos.');
         }
 
-        if (dimensao <= 0 || probabilidade_sem_conexao <= 0 || valor_min < 0 || valor_max <= valor_min || media_distancia < 0) {
+        if (dimensao <= 0 || probabilidade_sem_conexao < 0 || valor_min < 0 || valor_max <= valor_min || media_distancia < 0) {
             throw new Error('Por favor, insira valores válidos.');
         }
 
@@ -23,30 +23,44 @@ function gerarMatriz() {
             matriz_aleatoria[i][i] = 0;
         }
 
-        // Exibe a matriz gerada
-        const matrizElement = document.getElementById('matriz');
-        matrizElement.innerHTML = '';
-        for (const linha of matriz_aleatoria) {
-            const rowElement = document.createElement('div');
-            rowElement.className = 'row';
+        
+        const melhor_rota = document.getElementById('melhor_rota').value;
+        const valor_melhor_rota = parseFloat(document.getElementById('valor_melhor_rota').value);
 
-            for (const valor of linha) {
-                const cellElement = document.createElement('div');
-                cellElement.className = 'cell';
-                cellElement.textContent = valor.toFixed(2);
-                rowElement.appendChild(cellElement);
-            }
+    if (valor_melhor_rota <= 0) {
+        throw new Error('Por favor, insira um valor válido para a melhor rota.');
+    }
+    const matriz_aleatoria_com_rota = gerarMatrizPython(dimensao, valor_min, valor_max, media_distancia, probabilidade_sem_conexao, melhor_rota, valor_melhor_rota);
 
-            matrizElement.appendChild(rowElement);
+    // Corrige a diagonal principal
+    for (let i = 0; i < dimensao; i++) {
+        matriz_aleatoria_com_rota[i][i] = 0;
+    }
+
+    // Exibe a matriz gerada com a melhor rota
+    const matrizElement = document.getElementById('matriz');
+    matrizElement.innerHTML = '';
+    for (const linha of matriz_aleatoria_com_rota) {
+        const rowElement = document.createElement('div');
+        rowElement.className = 'row';
+
+        for (const valor of linha) {
+            const cellElement = document.createElement('div');
+            cellElement.className = 'cell';
+            cellElement.textContent = valor.toFixed(2);
+            rowElement.appendChild(cellElement);
         }
 
-    } catch (error) {
-        alert(error.message);
+        matrizElement.appendChild(rowElement);
     }
+
+} catch (error) {
+    alert(error.message);
+}
 }
 
 // Função para gerar a matriz (similar à função em Python)
-function gerarMatrizPython(dimensao, valor_min, valor_max, media_distancia, probabilidade_sem_conexao) {
+function gerarMatrizPython(dimensao, valor_min, valor_max, media_distancia, probabilidade_sem_conexao, melhor_rota, valor_melhor_rota) {
     // Inicializa a matriz com zeros
     let matriz = Array.from({ length: dimensao }, () => Array(dimensao).fill(0));
 
@@ -68,8 +82,26 @@ function gerarMatrizPython(dimensao, valor_min, valor_max, media_distancia, prob
         }
     }
 
+// Substitui os valores na melhor rota, se fornecida
+if (melhor_rota && valor_melhor_rota) {
+    const pontos_rota = melhor_rota.split(',').map(Number);
+    for (let i = 0; i < pontos_rota.length - 1; i++) {
+        const cidade_origem = pontos_rota[i];
+        const cidade_destino = pontos_rota[i + 1];
+        matriz[cidade_origem][cidade_destino] = valor_melhor_rota;
+        matriz[cidade_destino][cidade_origem] = valor_melhor_rota;
+    }
+
+    // Fecha a rota completa
+    const cidade_origem = pontos_rota[pontos_rota.length - 1];
+    const cidade_destino = pontos_rota[0];
+    matriz[cidade_origem][cidade_destino] = valor_melhor_rota;
+    matriz[cidade_destino][cidade_origem] = valor_melhor_rota;
+}
+
     return matriz;
 }
+
 
 
 
