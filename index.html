@@ -20,83 +20,175 @@
 	 #explicacao {
             text-align: justify;
         }
-
+        
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 20px;
-        }
-	
-	.btn-custom {
-   	 background-color: #0000FF; /* Esta é a cor verde personalizada */
-   	 border-color: #0000FF; /* Cor da borda igual à cor de fundo para um visual mais uniforme */
-	}
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 20px;
+        background-color: #1e1c1c; /* Cor de fundo mais clara para o bloco de conteúdo */
+        color: #ffffff; /* Cor do texto */
+        padding: 10px; /* Adiciona um espaçamento interno */
+    }
 
-        .container {
-            max-width: 800px;
-            margin: auto;
-        }
+    .container {
+        background-color: #3c3939; /* Cor mais escura para o bloco de conteúdo (tema dark) */
+        padding: 20px; /* Adiciona espaçamento interno ao bloco de conteúdo */
+        border-radius: 10px; /* Borda arredondada para o bloco de conteúdo */
+        box-shadow: 0px 0px 20px rgba(0,0,0,0.3); /* Adiciona uma sombra ao redor do bloco de conteúdo */
+        text-align: justify;
 
-        .row {
-            display: flex;
-            margin-bottom: 10px;
-        }
+    }
 
-        .cell {
-    width: 50px;
+    .btn-custom {
+        background-color: #0000FF;
+        border-color: #0000FF;
+    }
+    .cell {
+    width: 60px;
     height: 50px;
     text-align: center;
     line-height: 50px;
-    background-color: #CCCCCC; /* Adicionando um plano de fundo sutil */
-    margin-right: 5px;
-    margin-bottom: 5px; /* Adicionando uma margem inferior */
-    border: none; /* Removendo as bordas */
-    padding: 0; /* Removendo o espaçamento interno */
+    background-color: #333; /* Cor de fundo mais escura para as células */
+    color: #fff; /* Cor do texto nas células (branco para contraste) */
+    border-radius: 5px; /* Borda arredondada para as células */
+    font-size: 1.2em; /* Tamanho da fonte */
+    border: 1px solid #ffffff; /* Adiciona uma borda branca */
+    margin: 2px; /* Adiciona um espaçamento de 2 pixels entre as células */
+
+}
+.cell:hover {
+    background-color: #555; /* Cor de fundo quando a célula é selecionada */
+    color: #fff; /* Cor do texto quando a célula é selecionada */
+}
+    /* Adicione o estilo para os botões */
+    input[type="submit"],
+    input[type="button"] {
+        background-color: #61dafb; /* Azul do tema VSCode */
+        border: none;
+        color: #1e1e1e; /* Cor do texto no botão */
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    input[type="submit"]:hover,
+    input[type="button"]:hover {
+        background-color: #28a745; /* Verde do tema VSCode */
+    }
+
+    /* Modifique a cor dos inputs */
+    input[type="number"],
+    input[type="text"] {
+        background-color: #2d2d2d; /* Cor de fundo dos inputs */
+        color: #ffffff; /* Cor do texto nos inputs */
+        border: 1px solid #555555; /* Cor da borda dos inputs */
+    }
+
+    /* Modifique a cor do label */
+    label {
+        color: #ffffff;
+    }
+
+    /* Adicione um estilo para o link */
+    a {
+        color: #61dafb; /* Azul do tema VSCode para links */
+    }
+
+    /* Altere a cor de fundo da div mensagem */
+    #mensagem {
+        background-color: #04ec00;
+        border: 1px solid #555555;
+        padding: 5px;
+        display: none;
+        margin-top: 10px;
+        color: #103001;
+        font-weight: bold; /* Adiciona negrito ao texto dentro da div */
+    }
+
+    /* Adicione um estilo para os textos */
+    p, h1, h2 {
+        color: #ffffff;
+    }
+
+    /* Adicione um estilo para os checkboxes */
+    input[type="checkbox"] {
+        background-color: #2d2d2d;
+        border: 1px solid #555555;
+        color: #ffffff;
+    }
+
+    /* Adicione estilo para o label do checkbox */
+    label[for="exibirMatriz"] {
+        color: #ffffff;
+    }
+
+    /* Altere a cor de fundo da div matriz */
+    #matriz {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px; /* Espaçamento entre as células */
+    margin-top: 20px; /* Adiciona uma margem superior para separar do restante do conteúdo */
 }
 
+    /* Adicione um estilo para os botões de cópia */
+    #copiarPython, #copiarMatlab, #exportarExcel {
+        background-color: #61dafb; /* Azul do tema VSCode */
+        border-color: #61dafb; /* Cor da borda do botão */
+        color: #1e1e1e;
+    }
 
-        #mensagem {
-            position: absolute;
-            background-color: #ffffff;
-            border: 1px solid #000000;
-            padding: 5px;
-            display: none;
-            margin-top: 10px;
-        }
+    #copiarPython:hover, #copiarMatlab:hover, #exportarExcel:hover {
+        background-color: #28a745; /* Verde do tema VSCode */
+        border-color: #28a745; /* Cor da borda do botão ao passar o mouse */
+    }
+    /* Corrige a cor do botão "Gerar Matriz" */
+    input[type="submit"][value="Gerar Matriz"] {
+        background-color: #00b894; /* Tonalidade mais escura de verde água */
+        border-color: #00b894;
+        color: #2d3436; /* Texto mais escuro para contraste */
+        transition: background-color 0.3s, border-color 0.3s, color 0.3s; /* Adiciona uma transição suave */
+        font-weight: bold; /* Adiciona negrito ao texto dentro da div */
 
-        input[type="number"] {
-            width: 100px;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
+    }
 
-        input[type="submit"], input[type="button"] {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
-        }
+    /* Efeito de hover */
+    input[type="submit"][value="Gerar Matriz"]:hover {
+        background-color: #00a383; /* Tom mais escuro para hover */
+        border-color: #00a383;
+        color: #ffffff; /* Texto branco para hover */
+    }
+    /* Adicione um estilo para os blocos de código */
+    pre {
+    background-color: #2d2d2d; /* Cor de fundo para códigos */
+    color: #ffffff; /* Cor do texto nos códigos (branco para contraste) */
+    border: 1px solid #555555; /* Cor da borda dos blocos de código */
+    padding: 10px; /* Espaçamento interno nos blocos de código */
+    overflow-x: auto; /* Adiciona uma barra de rolagem horizontal se necessário */
+}
 
-        input[type="submit"]:hover, input[type="button"]:hover {
-            background-color: #45a049;
-        }
+    /* Adicione um estilo para o código dentro dos blocos de código */
+    pre code {
+        color: #212020; /* Cor do texto dentro dos blocos de código */
+    }
+    hr {
+    border: 1px solid #8e8e8e; /* Define a cor da linha */
+    margin: 20px 0; /* Define a margem acima e abaixo da linha */
+}
+h1 {
+    color: #ffffff; /* Cor do texto para h1 (laranja neste caso) */
+    
+}
 
-        .header {
-            text-align: justify;
-            margin-bottom: 20px;
-        }
-
-        .header h1 {
-            font-size: 2em;
-        }
-
-        .header h2 {
-            font-size: 1.5em;
-        }
+h2 {
+    color: #00AABB; /* Cor do texto para h2 (azul claro neste caso) */
+    font-weight: bold; /* Adiciona negrito ao texto dentro da div */
+}
+input[type="number"],
+input[type="text"] {
+    border-radius: 5px; /* Adiciona bordas arredondadas às caixas de input */
+    padding: 5px; /* Adiciona um espaçamento interno nas caixas de input */
+    border: 1px solid #ccc; /* Adiciona uma borda às caixas de input */
+    }
     </style>
 	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9669862512383363"
      crossorigin="anonymous"></script>
@@ -107,13 +199,15 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Gerador de Matriz para Caixeiro-viajante</h1>
-            <h2>Maicon Centner Germano | LinkedIn: <a href="https://www.linkedin.com/in/maiconcentner/" target="_blank"> Acessar perfil </a></h2>
-            <h2>Contato: maiconcentner@gmail.com</h2>
+            <h1>GERADOR DE MATRIZ PARA CAIXEIRO-VIAJANTE</h1>
+            <hr> 
+            <h3>Maicon Centner Germano | LinkedIn: <a href="https://www.linkedin.com/in/maiconcentner/" target="_blank"> Acessar perfil </a></h2>
+            <h3>Contato: maiconcentner@gmail.com</h2>
+            <hr>
             <p>O problema do caixeiro viajante é um famoso desafio de otimização em que o objetivo é encontrar a rota mais 		curta que passe por um conjunto de cidades e retorne à cidade de origem. Este problema tem aplicações em 		logística, planejamento de rotas e muitas outras áreas.</p>
         
         <p>A criação de instâncias (conjuntos de dados específicos) para testar modelos de resolução é crucial para avaliar 	a eficácia e a eficiência desses modelos. Essas instâncias representam cenários reais que o caixeiro viajante pode 	enfrentar, permitindo a validação e a otimização de soluções.</p>
-
+        <hr>
 	<div id="explicacao">
         <h2>Explicação da Ferramenta</h2>
 
@@ -132,7 +226,8 @@
 
 <p>A matriz gerada exibirá as distâncias entre as cidades simuladas, levando em conta a melhor rota especificada (caso fornecida) e a probabilidade de conexões ausentes. Lembre-se de que essas distâncias são geradas aleatoriamente e servem apenas para fornecer um conjunto de dados para testes acadêmicos. Em cenários reais, as distâncias seriam medidas de acordo com a unidade apropriada.</p>
 
-<p>Espero que isso ajude a esclarecer como o programa funciona e como ele pode ser útil para seus estudos acadêmicos! Abraços!</p>
+<p>Espero que isso ajude a esclarecer como o programa funciona e como ele pode ser útil para seus estudos acadêmicos. Abraços!</p>
+<hr>
 <h2>Observações:</h2>
                 <p>
                     Para usar a matriz gerada em Python, você pode salvar os dados em um arquivo de texto (por exemplo, 'grafo.txt') e, em seguida, carregá-lo usando o código abaixo:
@@ -140,67 +235,67 @@
 # import da matriz
 with open('grafo.txt', 'r') as arquivo:
     distancias = np.array(eval(arquivo.read().replace('Infinity', 'float("inf")')))
-                    </pre>
+</pre>
                 </p>
                 <p>
                     Para usar a matriz gerada no MATLAB, você pode salvar os dados em um arquivo de texto (por exemplo, 'grafo.txt') e, em seguida, carregá-lo usando o código abaixo no MATLAB:
                 </p>
                 <pre>
-                    <code>
 % Importação da matriz
 distancias = dlmread('grafo.txt');
-                    </code>
-Mas caso prefira, pode usar a matriz diretamente no seu código.
-                </pre>
+                    
+% Mas caso prefira, pode usar a matriz diretamente no seu código.
+</pre>
         </div>
         <br>
+        <hr>
         <h2>Parâmetros do gerador</h2>
 	<br>
     <form onsubmit="gerarMatriz(); return false;">
-        <label for="dimensao">Dimensão da Matriz (quadrada):</label>
+        <label for="dimensao">DIMENSÃO DA MATRIZ (QUADRADA):</label>
         <input type="number" id="dimensao" required value="5"><br><br>
     
-        <label for="valor_min">Valor Mínimo:</label>
+        <label for="valor_min">VALOR MÍNIMO:</label>
         <input type="number" id="valor_min" step="0.01" required value="40"><br><br>
     
-        <label for="valor_max">Valor Máximo:</label>
+        <label for="valor_max">VALOR MÁXIMO:</label>
         <input type="number" id="valor_max" step="0.01" required value="100"><br><br>
     
-        <label for="media_distancia">Distância média entre cidades:</label>
+        <label for="media_distancia">DISTÂNCIA MÉDIA ENTRE CIDADES:</label>
         <input type="number" id="media_distancia" step="0.01" required value="50"><br><br>
     
-        <label for="probabilidade_sem_conexao">Probabilidade de gerar nós sem conexões (entre 0 e 1):</label>
+        <label for="probabilidade_sem_conexao">PROBABILIDADE DE GERAR NÓS SEM CONEXÕES (ENTRE 0 E 1):</label>
         <input type="number" id="probabilidade_sem_conexao" step="0.01" required value="0.1"><br> <br>
     
-        <label for="valor_melhor_rota">[Opcional] Valor para cada aresta da Melhor Rota:</label>
+        <label for="valor_melhor_rota">[OPCIONAL] VALOR PARA CADA ARESTA DA MELHOR ROTA:</label>
         <input type="number" id="valor_melhor_rota" step="0.01" value="1"><br><br>
     
-        <label for="melhor_rota">[Opcional] Melhor Rota (separada por vírgulas):</label>
+        <label for="melhor_rota">[OPCIONAL] MELHOR ROTA (SEPARADA POR VÍRGULAS):</label>
         <input type="text" id="melhor_rota" value="0,1,2,3,4">
 	<br>
 	<br>
-        <input type="submit" style="background-color: #0000FF; border-color: #0000FF;" value="Gerar Matriz">
+        <input type="submit" value="Gerar Matriz">
 
 
     </form>
-        <br>
-	<h2>Opções de cópia</h2>
+    <hr>
+	<h3>Opções de cópia</h3>
         <input type="button" id="copiarPython" value="Copiar para Python" onclick="copiarParaPython(event)">
         
         <input type="button" id="copiarMatlab" value="Copiar para Matlab" onclick="copiarParaMatlab(event)">
         
         <input type="button" id="exportarExcel" value="Exportar para Excel" onclick="exportarParaExcel()">
 
-	<input type="button" value="Limpar Formulário" onclick="limparFormulario()">
+	    <input type="button" value="Limpar Formulário" onclick="limparFormulario()">
 
         <div class="checkbox-container">
 	    <br>
             <input type="checkbox" id="exibirMatriz" onchange="toggleExibirMatriz()">
 	    
-            <label for="exibirMatriz">Exibir Matriz (Recomendo exibir no máximo 14 colunas)</label>
+            <label for="exibirMatriz">Exibir Matriz (Recomendo exibir com no máximo 17 cidades)</label>
         </div>
         <br>
-        <h2>Matriz Gerada:</h2>
+        <h3>Matriz Gerada:</h3>
         <div id="matriz" style="display: none;"></div>
         <div id="mensagem"></div>
     </div>

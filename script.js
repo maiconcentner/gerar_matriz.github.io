@@ -170,7 +170,7 @@ function copiarParaAreaDeTransferencia(texto) {
 
 	    // Exibe a mensagem de sucesso
     const mensagemElement = document.getElementById('mensagem');
-    mensagemElement.textContent = 'Texto copiado com sucesso!';
+    mensagemElement.textContent = 'Matriz copiada com sucesso!';
 
     // Posiciona a mensagem ao lado do botão "Copiar para Matlab"
     const botaoCopiarMatlab = document.getElementById('copiarMatlab');
