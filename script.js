@@ -217,3 +217,22 @@ function limparFormulario() {
     document.getElementById('mensagem').style.display = 'none';
 }
 
+function exportarParaExcel() {
+    const matriz = obterMatriz();
+    const workbook = XLSX.utils.book_new();
+    const worksheet = XLSX.utils.aoa_to_sheet(matriz);
+
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Matriz');
+
+    const data = XLSX.write(workbook, { type: 'binary' });
+    const blob = new Blob([s2ab(data)], { type: 'application/octet-stream' });
+
+    saveAs(blob, 'matriz.xlsx');
+}
+
+function s2ab(s) {
+    const buf = new ArrayBuffer(s.length);
+    const view = new Uint8Array(buf);
+    for (let i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+    return buf;
+}

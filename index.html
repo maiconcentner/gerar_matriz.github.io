@@ -100,12 +100,16 @@
     </style>
 	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9669862512383363"
      crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.2/xlsx.full.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1>Gerador de Matriz para Caixeiro-viajante</h1>
             <h2>Maicon Centner Germano | LinkedIn: <a href="https://www.linkedin.com/in/maiconcentner/" target="_blank"> Acessar perfil </a></h2>
+            <h2>Contato: maiconcentner@gmail.com</h2>
             <p>O problema do caixeiro viajante é um famoso desafio de otimização em que o objetivo é encontrar a rota mais 		curta que passe por um conjunto de cidades e retorne à cidade de origem. Este problema tem aplicações em 		logística, planejamento de rotas e muitas outras áreas.</p>
         
         <p>A criação de instâncias (conjuntos de dados específicos) para testar modelos de resolução é crucial para avaliar 	a eficácia e a eficiência desses modelos. Essas instâncias representam cenários reais que o caixeiro viajante pode 	enfrentar, permitindo a validação e a otimização de soluções.</p>
@@ -165,7 +169,7 @@ Mas caso prefira, pode usar a matriz diretamente no seu código.
         <label for="media_distancia">Distância média entre cidades:</label>
         <input type="number" id="media_distancia" step="0.01" required value="50"><br><br>
     
-        <label for="probabilidade_sem_conexao">Probabilidade de gerar nós sem conexões:</label>
+        <label for="probabilidade_sem_conexao">Probabilidade de gerar nós sem conexões (entre 0 e 1):</label>
         <input type="number" id="probabilidade_sem_conexao" step="0.01" required value="0.1"><br> <br>
     
         <label for="valor_melhor_rota">[Opcional] Valor para cada aresta da Melhor Rota:</label>
@@ -185,6 +189,8 @@ Mas caso prefira, pode usar a matriz diretamente no seu código.
         
         <input type="button" id="copiarMatlab" value="Copiar para Matlab" onclick="copiarParaMatlab(event)">
         
+        <input type="button" id="exportarExcel" value="Exportar para Excel" onclick="exportarParaExcel()">
+
 	<input type="button" value="Limpar Formulário" onclick="limparFormulario()">
 
         <div class="checkbox-container">
